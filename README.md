@@ -20,6 +20,7 @@ Small iPhone application that generates and solves sudoku
 
 ## TODO:
 * **Add tests for basic algorithms and creation of sudoku**
+* Refactor and clean away duplicated code in Sudoku generator
 * Inplement x-wing algorithm for solving Hard puzzles without bruteforcing
 * Implement Hidden subset algorithm for solving Hard puzzles without bruteforcing
 * *Add feedback for when user tapps the hidden solving buttons in the main view* or remove buttons
