@@ -262,7 +262,9 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             sudoku = nil
             originalSudoku = nil
             collectionView.reloadData()
-            statusLabel.text = "Sudoku file has incorrect format!"
+            var alertView = UIAlertView(title: "Error", message: "The file has to contain exactly 81 characters.", delegate: nil, cancelButtonTitle: "Ok")
+            alertView.show()
+            statusLabel.text = ""
         }
     }
     
