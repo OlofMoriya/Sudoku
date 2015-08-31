@@ -33,8 +33,8 @@ class SudokuGenerator: NSObject {
             var removedValue = sudoku.data[randomIndex]
             sudoku.data[randomIndex] = 0
             
-            var sudokuCopy = sudoku.copy()
-            var uniqueTest = sudoku.copy()
+            var sudokuCopy = Sudoku.copy(sudoku)
+            var uniqueTest = Sudoku.copy(sudoku)
             
             solver.soleCandidate(sudokuCopy)
             result = sudokuCopy.sum()
@@ -60,8 +60,8 @@ class SudokuGenerator: NSObject {
             var removedValue = sudoku.data[randomIndex]
             sudoku.data[randomIndex] = 0
             
-            var sudokuCopy = sudoku.copy()
-            var uniqueTest = sudoku.copy()
+            var sudokuCopy = Sudoku.copy(sudoku)
+            var uniqueTest = Sudoku.copy(sudoku)
             
             solver.solve(sudokuCopy)
             solver.backtrack(sudokuCopy,ignoreSolutions: [])
@@ -90,7 +90,7 @@ class SudokuGenerator: NSObject {
             var removedValue = sudoku.data[randomIndex]
             sudoku.data[randomIndex] = 0
             
-            var sudokuCopy = sudoku.copy()
+            var sudokuCopy = Sudoku.copy(sudoku)
             
             solver.solve(sudokuCopy)
             result = sudokuCopy.sum()

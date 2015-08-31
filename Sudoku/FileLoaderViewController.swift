@@ -20,6 +20,36 @@ class FileLoaderViewController: UIViewController, UITableViewDelegate, UITableVi
     var fileList:[String]=[]
     weak var delegate: FileLoaderDelegate?
     
+    //MARK: ViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fileList = []
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        automaticallyAdjustsScrollViewInsets = false
+        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.activityIndicator.layer.cornerRadius = 5
+        
+        let docsPath = NSBundle.mainBundle().resourcePath! + "/";
+        let fileManager = NSFileManager.defaultManager()
+        
+        var error: NSError?
+        if let docsArray = fileManager.contentsOfDirectoryAtPath(docsPath, error:&error) as? [String]{
+            for doc in docsArray {
+                if doc.rangeOfString(".sudoku", options: NSStringCompareOptions.allZeros, range: nil, locale: nil) != nil{
+                    var fileName = doc.componentsSeparatedByString(".")[0]
+                    fileList.append(fileName)
+                }
+            }
+        }
+    }
+    
+    //MARK: Actions
+    
     @IBAction func createSudokutapped(sender: AnyObject) {
         var createAlert = UIAlertController(title: "Create", message: "Choose difficulty", preferredStyle: UIAlertControllerStyle.ActionSheet)
 
@@ -76,30 +106,7 @@ class FileLoaderViewController: UIViewController, UITableViewDelegate, UITableVi
         presentViewController(createAlert, animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        fileList = []
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        self.activityIndicator.layer.cornerRadius = 5
-        
-        let docsPath = NSBundle.mainBundle().resourcePath! + "/";
-        let fileManager = NSFileManager.defaultManager()
-        
-        var error: NSError?
-        if let docsArray = fileManager.contentsOfDirectoryAtPath(docsPath, error:&error) as? [String]{
-            for doc in docsArray {
-                if doc.rangeOfString(".sudoku", options: NSStringCompareOptions.allZeros, range: nil, locale: nil) != nil{
-                    var fileName = doc.componentsSeparatedByString(".")[0]
-                    fileList.append(fileName)
-                }
-            }
-        }
-    }
+    //MARK: TableView
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fileList.count

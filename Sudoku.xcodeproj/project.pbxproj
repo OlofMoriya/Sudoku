@@ -18,6 +18,7 @@
 		9149F8971B90E7D300592697 /* SudokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149F8961B90E7D300592697 /* SudokuSolver.swift */; };
 		9149F89B1B91393F00592697 /* SudokuBoardCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149F8991B91393F00592697 /* SudokuBoardCellCollectionViewCell.swift */; };
 		9149F89C1B91393F00592697 /* SudokuBoardCellCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9149F89A1B91393F00592697 /* SudokuBoardCellCollectionViewCell.xib */; };
+		915BC0811B94AA27003675F8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915BC0801B94AA27003675F8 /* Style.swift */; };
 		9167BBA51B9240AA00477AE9 /* Medium.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA41B9240AA00477AE9 /* Medium.sudoku */; };
 		9167BBA71B92515300477AE9 /* Error.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA61B92515300477AE9 /* Error.sudoku */; };
 		9167BBA91B9268C100477AE9 /* GenTest.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA81B9268C100477AE9 /* GenTest.sudoku */; };
@@ -55,6 +56,7 @@
 		9149F8961B90E7D300592697 /* SudokuSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuSolver.swift; sourceTree = "<group>"; };
 		9149F8991B91393F00592697 /* SudokuBoardCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuBoardCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		9149F89A1B91393F00592697 /* SudokuBoardCellCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SudokuBoardCellCollectionViewCell.xib; sourceTree = "<group>"; };
+		915BC0801B94AA27003675F8 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		9167BBA41B9240AA00477AE9 /* Medium.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Medium.sudoku; path = Data/Medium.sudoku; sourceTree = "<group>"; };
 		9167BBA61B92515300477AE9 /* Error.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Error.sudoku; path = Data/Error.sudoku; sourceTree = "<group>"; };
 		9167BBA81B9268C100477AE9 /* GenTest.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GenTest.sudoku; path = Data/GenTest.sudoku; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		9149F86E1B90E6B400592697 /* Sudoku */ = {
 			isa = PBXGroup;
 			children = (
+				915BC07F1B94AA0E003675F8 /* Utils */,
 				91DDE5D41B921F2D00B54BBF /* Control */,
 				91DDE5C71B91499F00B54BBF /* Data */,
 				9149F8981B91391500592697 /* Cells */,
@@ -114,7 +117,6 @@
 				9149F8781B90E6B400592697 /* Images.xcassets */,
 				9149F87A1B90E6B400592697 /* LaunchScreen.xib */,
 				9149F86F1B90E6B400592697 /* Supporting Files */,
-				9149F8941B90E70F00592697 /* Utils.swift */,
 			);
 			path = Sudoku;
 			sourceTree = "<group>";
@@ -161,6 +163,15 @@
 				9149F89A1B91393F00592697 /* SudokuBoardCellCollectionViewCell.xib */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		915BC07F1B94AA0E003675F8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				9149F8941B90E70F00592697 /* Utils.swift */,
+				915BC0801B94AA27003675F8 /* Style.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		91DDE5C71B91499F00B54BBF /* Data */ = {
@@ -301,6 +312,7 @@
 				9149F8741B90E6B400592697 /* ViewController.swift in Sources */,
 				9149F8721B90E6B400592697 /* AppDelegate.swift in Sources */,
 				9149F8931B90E6E000592697 /* Sudoku.swift in Sources */,
+				915BC0811B94AA27003675F8 /* Style.swift in Sources */,
 				9149F8951B90E70F00592697 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

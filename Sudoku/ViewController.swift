@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var collectionView: UICollectionView!
     var sudoku: Sudoku?{
         didSet{
-            originalSudoku = sudoku?.copy()
+            originalSudoku = Sudoku.copy(sudoku!)
         }
     }
     var originalSudoku: Sudoku?
@@ -31,6 +31,52 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var backtrackButton: UIButton!
     @IBOutlet weak var numberTextField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
+
+    //MARK: ViewController
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var startSudokuString = "7...9...32..468..1..8...6...4..2..9....3.4....8..1..3...9...7..5..142..68...5...2"
+        
+        sudoku = Sudoku(string: startSudokuString)!
+        
+        activityIndicator.layer.cornerRadius = 5
+        
+        var flowLayout = UICollectionViewFlowLayout()
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.minimumLineSpacing = 0
+        var size = (UIScreen.mainScreen().bounds.size.width - 32) / 9
+        flowLayout.itemSize = CGSize(width: size, height: size)
+        self.collectionView.collectionViewLayout = flowLayout
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        automaticallyAdjustsScrollViewInsets = false
+        
+        collectionView.registerNib(UINib(nibName: SudokuBoardCellIdentifier, bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: SudokuBoardCellIdentifier)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        collectionView.reloadData()
+    }
+    
+    func isSingleSolution(solvedSudoku:Sudoku, originalSudoku:Sudoku)->Bool{
+        
+        var solver = SudokuSolver()
+        solver.backtrack(originalSudoku, ignoreSolutions: [solvedSudoku])
+        if originalSudoku.sum() == 405{
+            return false
+        }
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let fileLoaderViewController = segue.destinationViewController as? FileLoaderViewController{
+            fileLoaderViewController.delegate = self
+        }
+    }
+    
+    //MARK: Actions
     
     @IBAction func backtrackTapped(sender: AnyObject) {
         if let sudoku = sudoku{
@@ -44,6 +90,10 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         if let indexPath = selectedIndexPath, value = numberTextField.text.toInt(){
             sudoku!.data[indexPath.row] = value
             collectionView.reloadItemsAtIndexPaths([indexPath])
+            if sudoku!.validate(){
+                var alertView = UIAlertView(title: "Congratulations", message: "You completed the sudoku successfully", delegate: nil, cancelButtonTitle: "Ok")
+                alertView.show()
+            }
         }
         numberTextField.resignFirstResponder()
     }
@@ -97,7 +147,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         activityIndicator.startAnimating()
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let original = self.sudoku!.copy()
+            let original = Sudoku.copy(self.sudoku!)
             
             var status = ""
             
@@ -148,41 +198,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         collectionView.reloadData()
     }
     
-    func isSingleSolution(solvedSudoku:Sudoku, originalSudoku:Sudoku)->Bool{
-        
-        var solver = SudokuSolver()
-        solver.backtrack(originalSudoku, ignoreSolutions: [solvedSudoku])
-        if originalSudoku.sum() == 405{
-            return false
-        }
-        return true
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        var mediumSudokuString = "7...9...32..468..1..8...6...4..2..9....3.4....8..1..3...9...7..5..142..68...5...2"
-        
-        sudoku = Sudoku(string: mediumSudokuString)!
-        
-        activityIndicator.layer.cornerRadius = 5
-        
-        var flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
-        var size = (UIScreen.mainScreen().bounds.size.width - 32) / 9
-        flowLayout.itemSize = CGSize(width: size, height: size)
-        self.collectionView.collectionViewLayout = flowLayout
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        automaticallyAdjustsScrollViewInsets = false
-
-        collectionView.registerNib(UINib(nibName: SudokuBoardCellIdentifier, bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: SudokuBoardCellIdentifier)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        collectionView.reloadData()
-    }
+    //MARK: CollectionView
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
         return sudoku != nil ? 81 : 0
@@ -196,23 +212,17 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             cell.numberLabel.text = "\(sudoku!.data[indexPath.row])"
         }
         
-        let coord = SudokuSolver.coordFromIndex(indexPath.row)
+        let coord = Sudoku.coordFromIndex(indexPath.row)
 
         if showInfo{
-            cell.numberLabel.textColor = originalSudoku!.data[indexPath.row] != 0 ? UIColor.redColor() : UIColor.darkGrayColor()
+            cell.numberLabel.textColor = originalSudoku!.data[indexPath.row] != 0 ? Colors.mainColor : Colors.gray
             cell.availableLabel.text = sudoku!.validValuesForCoord(x: coord.x, y: coord.y)!.count == 0 ? "" : "\(sudoku!.validValuesForCoord(x: coord.x, y: coord.y)!)"
         }else{
             cell.availableLabel.text = ""
-            cell.numberLabel.textColor = UIColor.blackColor()
+            cell.numberLabel.textColor = Colors.gray
         }
         
         return cell
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let fileLoaderViewController = segue.destinationViewController as? FileLoaderViewController{
-            fileLoaderViewController.delegate = self
-        }
     }
     
     var selectedIndexPath: NSIndexPath?
@@ -236,7 +246,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             sudoku = nil
             originalSudoku = nil
             collectionView.reloadData()
-            statusLabel.text = "Sudoku file has wrong format"
+            statusLabel.text = "Sudoku file does not have the correct format!"
         }
     }
     

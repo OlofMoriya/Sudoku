@@ -30,45 +30,28 @@ class Sudoku{
         }
     }
     
-    func copy()->Sudoku{
-        var copy = Sudoku()
-        copy.data = data
-        return copy
+    //MARK: Static helpers
+    
+    static func coordFromIndex(index:Int)->(x:Int, y:Int){
+        return (index%9, index/9)
     }
     
-    func nextEmptyIndex()->Int?{
-        for i in 0...80{
-            if data[i] == 0{
-                return i
-            }
-        }
-        return nil
-    }
-    
-    func printSudoku(){
-        var output = ""
-        for i in 0...8{
-            for j in 0...8{
-                output = "\(output)\(data[j+(9*i)])"
-            }
-            output = "\(output)\n"
-        }
-        println(output)
-    }
-    
-    func sum()->Int{
-        var sum = 0
-        for value in data{
-            sum += value
-        }
-        return sum
-    }
-    
-    func dataIndexFromCoord(#x:Int, y:Int)->Int{
+    static func dataIndexFromCoord(#x:Int, y:Int)->Int{
         return x + y*9
     }
     
-    func inversOfValues(values:[Int])->[Int]{
+    static func squareIndexOfCoord(inX x:Int, andY y: Int)->Int?{
+        if !Sudoku.isValidCoord(x:x, y:y) {
+            return nil
+        }
+        return x/3 + y/3 * 3
+    }
+
+    static func isValidCoord(#x:Int, y:Int)->Bool{
+        return !(x < 0 || x > 8 || y < 0 || y > 8)
+    }
+    
+    static func inversOfValues(values:[Int])->[Int]{
         var inverse: [Int:Bool] = [:]
         for i in 1...9{
             inverse[i] = true
@@ -81,26 +64,21 @@ class Sudoku{
         return inverse.keys.array
     }
     
-    func unionOfArrays(arrays:[[Int]])->[Int]?{
-        if arrays.count < 2{
-            return nil
-        }
-        
-        var union:[Int] = []
-        
-        for value in arrays[0]{
-            var existInAllArrays = true
-            for i in 1..<arrays.count{
-                if !contains(arrays[i], value){
-                    existInAllArrays = false
-                    break
-                }
-            }
-            if existInAllArrays{
-                union.append(value)
+    static func copy(sudoku:Sudoku)->Sudoku{
+        var copy = Sudoku()
+        copy.data = sudoku.data
+        return copy
+    }
+    
+    //MARK: Data Helpers
+    
+    func nextEmptyIndex()->Int?{
+        for i in 0...80{
+            if data[i] == 0{
+                return i
             }
         }
-        return union
+        return nil
     }
     
     func isValueValidInCoord(#value: Int, inX x:Int, andY y:Int)->Bool{
@@ -116,11 +94,11 @@ class Sudoku{
     }
     
     func invalidNumbersForCoord(#x:Int, y:Int)->[Int]?{
-        if !isValidCoord(x: x, y: y){
+        if !Sudoku.isValidCoord(x: x, y: y){
             return nil
         }
         
-        if let row = valuesInRow(y), col = valuesInColumn(x), squareIndex = squareIndexOfCoord(inX: x, andY: y), square = valuesInSquare(squareIndex){
+        if let row = valuesInRow(y), col = valuesInColumn(x), squareIndex = Sudoku.squareIndexOfCoord(inX: x, andY: y), square = valuesInSquare(squareIndex){
             let illigalValues = row + col + square
             return uniq(illigalValues)
         }
@@ -129,21 +107,17 @@ class Sudoku{
         }
     }
     
-    func isValidCoord(#x:Int, y:Int)->Bool{
-        return !(x < 0 || x > 8 || y < 0 || y > 8)
-    }
-    
     func validValuesForCoord(#x:Int, y:Int)->[Int]?{
-        if !isValidCoord(x: x, y: y){
+        if !Sudoku.isValidCoord(x: x, y: y){
             return nil
         }
         
-        if data[dataIndexFromCoord(x: x, y: y)] != 0{
+        if data[Sudoku.dataIndexFromCoord(x: x, y: y)] != 0{
             return []
         }
         
         if let invalidNumbers = invalidNumbersForCoord(x: x, y: y){
-            return inversOfValues(invalidNumbers)
+            return Sudoku.inversOfValues(invalidNumbers)
         }else{
             return nil
         }
@@ -178,13 +152,6 @@ class Sudoku{
         return values
     }
     
-    func squareIndexOfCoord(inX x:Int, andY y: Int)->Int?{
-        if !isValidCoord(x:x, y: y) {
-            return nil
-        }
-        return x/3 + y/3 * 3
-    }
-    
     func valuesInSquare(index:Int)->[Int]?{
         if index < 0 || index > 8{
             return nil
@@ -204,5 +171,81 @@ class Sudoku{
         }
         
         return values
+    }
+    
+    //MARK: Validation
+    
+    func sum()->Int{
+        var sum = 0
+        for value in data{
+            sum += value
+        }
+        return sum
+    }
+    
+    func validate()->Bool{
+        if sum() != 405 {
+            return false
+        }
+        
+        let testNumbers = [1,2,3,4,5,6,7,8,9]
+        //test rows
+        for i in 0...8{
+            var numbers:[Int] = []
+            for j in 0...8{
+                numbers.append(data[j + i*9])
+            }
+            var containsEveryNumber = true
+            for number in testNumbers{
+                containsEveryNumber = containsEveryNumber && contains(numbers, number)
+            }
+            if !containsEveryNumber{
+                return false
+            }
+        }
+        //test columns
+        for i in 0...8{
+            var numbers:[Int] = []
+            for j in 0...8{
+                numbers.append(data[j*9 + i])
+            }
+            var containsEveryNumber = true
+            for number in testNumbers{
+                containsEveryNumber = containsEveryNumber && contains(numbers, number)
+            }
+            if !containsEveryNumber{
+                return false
+            }
+        }
+        //test squares
+        for square in 0...8{
+            var numbers:[Int] = []
+            for y in 0...2{
+                for x in 0...2{
+                    numbers.append(data[x + y*9 + (square / 3) * 27])
+                }
+            }
+            var containsEveryNumber = true
+            for number in testNumbers{
+                containsEveryNumber = containsEveryNumber && contains(numbers, number)
+            }
+            if !containsEveryNumber{
+                return false
+            }
+        }
+        return true
+    }
+    
+    //MARK: Log Helpers
+    
+    func printSudokuLog(){
+        var output = ""
+        for i in 0...8{
+            for j in 0...8{
+                output = "\(output)\(data[j+(9*i)])"
+            }
+            output = "\(output)\n"
+        }
+        println(output)
     }
 }

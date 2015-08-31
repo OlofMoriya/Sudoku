@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="inR-3x-XM5">
-                                <rect key="frame" x="16" y="140" width="382" height="382"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="inR-3x-XM5">
+                                <rect key="frame" x="16" y="80" width="382" height="382"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="inR-3x-XM5" secondAttribute="height" multiplier="1:1" id="6SK-aK-6Gr"/>
@@ -30,20 +30,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="e3a-9O-JhT">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGA-Uf-nZm">
-                                <rect key="frame" x="167" y="291" width="80" height="80"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wGA-Uf-nZm">
+                                <rect key="frame" x="167" y="231" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="8vq-Sd-iNh"/>
@@ -51,7 +41,7 @@
                                 </constraints>
                             </activityIndicatorView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VlE-ZF-cYX">
-                                <rect key="frame" x="186" y="698" width="31" height="30"/>
+                                <rect key="frame" x="170" y="698" width="31" height="30"/>
                                 <state key="normal" title="Sole">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -60,7 +50,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UYH-Cx-o5F">
-                                <rect key="frame" x="138" y="698" width="40" height="30"/>
+                                <rect key="frame" x="122" y="698" width="40" height="30"/>
                                 <state key="normal" title="Cross">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -69,7 +59,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElP-ii-ois">
-                                <rect key="frame" x="81" y="698" width="49" height="30"/>
+                                <rect key="frame" x="65" y="698" width="49" height="30"/>
                                 <state key="normal" title="Unique">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -78,7 +68,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91e-R6-ssj">
-                                <rect key="frame" x="24" y="698" width="49" height="30"/>
+                                <rect key="frame" x="8" y="698" width="49" height="30"/>
                                 <state key="normal" title="Subset">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -87,7 +77,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1B-fu-7dY">
-                                <rect key="frame" x="225" y="698" width="70" height="30"/>
+                                <rect key="frame" x="209" y="698" width="70" height="30"/>
                                 <state key="normal" title="Backtrack">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -95,10 +85,10 @@
                                     <action selector="backtrackTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gBU-It-UlG"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TX9-Lb-p95">
-                                <rect key="frame" x="207" y="500" width="0.0" height="0.0"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TX9-Lb-p95">
+                                <rect key="frame" x="207" y="478" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.50980392159999999" green="0.50980392159999999" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUw-cC-fqh">
@@ -110,16 +100,16 @@
                                     <action selector="infoButtonTapped:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yjW-fM-ThJ"/>
                                 </connections>
                             </button>
-                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AiM-wV-Hrw">
-                                <rect key="frame" x="309" y="664" width="97" height="30"/>
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AiM-wV-Hrw">
+                                <rect key="frame" x="380" y="664" width="26" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="numberDidChange:" destination="vXZ-lx-hvc" eventType="editingChanged" id="HFg-dv-c5G"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-I0-sDn">
-                                <rect key="frame" x="0.0" y="649" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q4M-I0-sDn">
+                                <rect key="frame" x="0.0" y="656" width="80" height="80"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -149,7 +139,7 @@
                             <constraint firstAttribute="bottom" secondItem="Q4M-I0-sDn" secondAttribute="bottom" id="qNn-Pc-IZg"/>
                             <constraint firstItem="91e-R6-ssj" firstAttribute="centerY" secondItem="ElP-ii-ois" secondAttribute="centerY" id="sCT-gI-6U4"/>
                             <constraint firstItem="TX9-Lb-p95" firstAttribute="top" secondItem="inR-3x-XM5" secondAttribute="bottom" constant="16" id="sjd-0w-4ox"/>
-                            <constraint firstItem="91e-R6-ssj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="8" id="tjR-an-wxX"/>
+                            <constraint firstItem="91e-R6-ssj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="8" id="tjR-an-wxX"/>
                             <constraint firstItem="VlE-ZF-cYX" firstAttribute="leading" secondItem="UYH-Cx-o5F" secondAttribute="trailing" constant="8" id="yIf-t0-9Qt"/>
                         </constraints>
                         <variation key="default">
@@ -190,7 +180,7 @@
             </objects>
             <point key="canvasLocation" x="1162" y="309"/>
         </scene>
-        <!--Load from file-->
+        <!--File Loader View Controller-->
         <scene sceneID="Ze8-ie-l2a">
             <objects>
                 <viewController id="nso-Kc-3gR" customClass="FileLoaderViewController" customModule="Sudoku" customModuleProvider="target" sceneMemberID="viewController">
@@ -206,8 +196,8 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tmC-NU-egG">
-                                <rect key="frame" x="189" y="350" width="37" height="37"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tmC-NU-egG">
+                                <rect key="frame" x="167" y="328" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="7L5-SM-u2I"/>
@@ -225,7 +215,7 @@
                             <constraint firstAttribute="centerY" secondItem="tmC-NU-egG" secondAttribute="centerY" id="zsX-JU-DTW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Load from file" id="zQk-XJ-A7c">
+                    <navigationItem key="navigationItem" id="zQk-XJ-A7c">
                         <barButtonItem key="rightBarButtonItem" title="Create Sudoku" id="NLg-nS-84a">
                             <connections>
                                 <action selector="createSudokutapped:" destination="nso-Kc-3gR" id="39N-C8-1Mj"/>
