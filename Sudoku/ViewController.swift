@@ -63,7 +63,6 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     }
     
     func isSingleSolution(solvedSudoku:Sudoku, originalSudoku:Sudoku)->Bool{
-        
         var solver = SudokuSolver()
         solver.backtrack(originalSudoku, ignoreSolutions: [solvedSudoku])
         if originalSudoku.sum() == 405{
@@ -89,15 +88,22 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func numberDidChange(sender: AnyObject) {
-        if let indexPath = selectedIndexPath, value = numberTextField.text.toInt(){
-            sudoku!.data[indexPath.row] = value
-            collectionView.reloadItemsAtIndexPaths([indexPath])
-            if sudoku!.validate(){
-                var alertView = UIAlertView(title: "Congratulations", message: "You completed the sudoku successfully", delegate: nil, cancelButtonTitle: "Ok")
-                alertView.show()
+        if let indexPath = selectedIndexPath{
+            var value = numberTextField.text.toInt()
+            if numberTextField.text == ""{
+                value = 0
             }
-            selectedIndexPath = nil
-            collectionView.reloadItemsAtIndexPaths([indexPath])
+            
+            if value != nil{
+                sudoku!.data[indexPath.row] = value!
+                collectionView.reloadItemsAtIndexPaths([indexPath])
+                if sudoku!.validate(){
+                    var alertView = UIAlertView(title: "Congratulations", message: "You completed the sudoku successfully", delegate: nil, cancelButtonTitle: "Ok")
+                    alertView.show()
+                }
+                selectedIndexPath = nil
+                collectionView.reloadItemsAtIndexPaths([indexPath])
+            }
         }
         numberTextField.resignFirstResponder()
     }
@@ -238,9 +244,21 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     
     var selectedIndexPath: NSIndexPath?
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        selectedIndexPath = indexPath
-        collectionView.reloadItemsAtIndexPaths([indexPath])
-        numberTextField.becomeFirstResponder()
+        let lastSelectedIndexPath = selectedIndexPath
+        if lastSelectedIndexPath != nil{
+            selectedIndexPath = nil
+            collectionView.reloadItemsAtIndexPaths([lastSelectedIndexPath!])
+        }
+        if indexPath != lastSelectedIndexPath{
+            selectedIndexPath = indexPath
+            collectionView.reloadItemsAtIndexPaths([indexPath])
+            numberTextField.text = "\(sudoku!.data[indexPath.row])"
+            numberTextField.becomeFirstResponder()
+        }else{
+            numberTextField.resignFirstResponder()
+        }
+        
+
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {

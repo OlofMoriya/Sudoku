@@ -21,10 +21,8 @@
 		915BC0811B94AA27003675F8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915BC0801B94AA27003675F8 /* Style.swift */; };
 		9167BBA51B9240AA00477AE9 /* Medium.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA41B9240AA00477AE9 /* Medium.sudoku */; };
 		9167BBA71B92515300477AE9 /* Error.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA61B92515300477AE9 /* Error.sudoku */; };
-		9167BBA91B9268C100477AE9 /* GenTest.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBA81B9268C100477AE9 /* GenTest.sudoku */; };
 		9167BBAB1B9269E100477AE9 /* SudokuGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9167BBAA1B9269E100477AE9 /* SudokuGenerator.swift */; };
 		9167BBAD1B92729500477AE9 /* Unsolvable.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 9167BBAC1B92729500477AE9 /* Unsolvable.sudoku */; };
-		91DDE5D11B9211FE00B54BBF /* TestNS.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 91DDE5CE1B9211FE00B54BBF /* TestNS.sudoku */; };
 		91DDE5D21B9211FE00B54BBF /* Hard.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 91DDE5CF1B9211FE00B54BBF /* Hard.sudoku */; };
 		91DDE5D31B9211FE00B54BBF /* Easy.sudoku in Resources */ = {isa = PBXBuildFile; fileRef = 91DDE5D01B9211FE00B54BBF /* Easy.sudoku */; };
 		91DDE5D61B921FB400B54BBF /* FileLoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91DDE5D51B921FB400B54BBF /* FileLoaderViewController.swift */; };
@@ -59,10 +57,8 @@
 		915BC0801B94AA27003675F8 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		9167BBA41B9240AA00477AE9 /* Medium.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Medium.sudoku; path = Data/Medium.sudoku; sourceTree = "<group>"; };
 		9167BBA61B92515300477AE9 /* Error.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Error.sudoku; path = Data/Error.sudoku; sourceTree = "<group>"; };
-		9167BBA81B9268C100477AE9 /* GenTest.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = GenTest.sudoku; path = Data/GenTest.sudoku; sourceTree = "<group>"; };
 		9167BBAA1B9269E100477AE9 /* SudokuGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuGenerator.swift; sourceTree = "<group>"; };
 		9167BBAC1B92729500477AE9 /* Unsolvable.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Unsolvable.sudoku; path = Data/Unsolvable.sudoku; sourceTree = "<group>"; };
-		91DDE5CE1B9211FE00B54BBF /* TestNS.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TestNS.sudoku; path = Data/TestNS.sudoku; sourceTree = "<group>"; };
 		91DDE5CF1B9211FE00B54BBF /* Hard.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hard.sudoku; path = Data/Hard.sudoku; sourceTree = "<group>"; };
 		91DDE5D01B9211FE00B54BBF /* Easy.sudoku */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Easy.sudoku; path = Data/Easy.sudoku; sourceTree = "<group>"; };
 		91DDE5D51B921FB400B54BBF /* FileLoaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLoaderViewController.swift; sourceTree = "<group>"; };
@@ -177,12 +173,10 @@
 		91DDE5C71B91499F00B54BBF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				91DDE5CE1B9211FE00B54BBF /* TestNS.sudoku */,
 				91DDE5CF1B9211FE00B54BBF /* Hard.sudoku */,
 				91DDE5D01B9211FE00B54BBF /* Easy.sudoku */,
 				9167BBA41B9240AA00477AE9 /* Medium.sudoku */,
 				9167BBA61B92515300477AE9 /* Error.sudoku */,
-				9167BBA81B9268C100477AE9 /* GenTest.sudoku */,
 				9167BBAC1B92729500477AE9 /* Unsolvable.sudoku */,
 			);
 			name = Data;
@@ -277,7 +271,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91DDE5D11B9211FE00B54BBF /* TestNS.sudoku in Resources */,
 				9167BBA71B92515300477AE9 /* Error.sudoku in Resources */,
 				91DDE5D21B9211FE00B54BBF /* Hard.sudoku in Resources */,
 				9149F89C1B91393F00592697 /* SudokuBoardCellCollectionViewCell.xib in Resources */,
@@ -287,7 +280,6 @@
 				9167BBAD1B92729500477AE9 /* Unsolvable.sudoku in Resources */,
 				9149F87C1B90E6B400592697 /* LaunchScreen.xib in Resources */,
 				9149F8791B90E6B400592697 /* Images.xcassets in Resources */,
-				9167BBA91B9268C100477AE9 /* GenTest.sudoku in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
