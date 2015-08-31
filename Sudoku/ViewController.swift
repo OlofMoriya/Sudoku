@@ -14,7 +14,9 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     @IBOutlet weak var collectionView: UICollectionView!
     var sudoku: Sudoku?{
         didSet{
-            originalSudoku = Sudoku.copy(sudoku!)
+            if sudoku != nil{
+                originalSudoku = Sudoku.copy(sudoku!)
+            }
         }
     }
     var originalSudoku: Sudoku?
@@ -231,7 +233,6 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             cell.selectionView.backgroundColor = UIColor.whiteColor()
         }
 
-
         return cell
     }
     
@@ -261,7 +262,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             sudoku = nil
             originalSudoku = nil
             collectionView.reloadData()
-            statusLabel.text = "Sudoku file does not have the correct format!"
+            statusLabel.text = "Sudoku file has incorrect format!"
         }
     }
     
