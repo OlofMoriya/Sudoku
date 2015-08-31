@@ -1,17 +1,20 @@
 # Sudoku
 Small iPhone application that generates and solves sudoku
 
-The application contains the following features:
-## Solving
+## Features
+### Solving
 * Logic for solving Easy puzzles without guessing
 * Logic for solving Medium puzzles without guessing
 * Logic for solving Hard or "Samurai" level puzzles with bruteforcing guesses
-## Generating
+
+### Generating
 * Application can generate easy,medium, and hard/samurai puzzles
 (There is still no difference in hard and samurai level in the generation)
-## Play
+
+### Play
 * Sudoku is playable and validates as the last number is filled succefully
-## Load sudokus from file
+
+### Load sudokus from file
 * Files in the Data folder, with the extension ".sudoku" is listed and can be loaded as sudokus
 
 
