@@ -53,6 +53,7 @@
             <connections>
                 <outlet property="availableLabel" destination="r7g-DS-Ovt" id="f9C-HI-Vcq"/>
                 <outlet property="numberLabel" destination="tea-yy-8vb" id="Oxi-Cd-54h"/>
+                <outlet property="selectionView" destination="qkP-UP-Qlh" id="R3u-qe-bOC"/>
             </connections>
             <point key="canvasLocation" x="337" y="241.5"/>
         </collectionViewCell>

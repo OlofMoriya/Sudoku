@@ -94,6 +94,8 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
                 var alertView = UIAlertView(title: "Congratulations", message: "You completed the sudoku successfully", delegate: nil, cancelButtonTitle: "Ok")
                 alertView.show()
             }
+            selectedIndexPath = nil
+            collectionView.reloadItemsAtIndexPaths([indexPath])
         }
         numberTextField.resignFirstResponder()
     }
@@ -222,15 +224,28 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             cell.numberLabel.textColor = Colors.gray
         }
         
+        if let selectedIndexPath = selectedIndexPath where selectedIndexPath.row == indexPath.row{
+            cell.selectionView.backgroundColor = Colors.mainColor
+        }
+        else{
+            cell.selectionView.backgroundColor = UIColor.whiteColor()
+        }
+
+
         return cell
     }
     
     var selectedIndexPath: NSIndexPath?
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedIndexPath = indexPath
+        collectionView.reloadItemsAtIndexPaths([indexPath])
         numberTextField.becomeFirstResponder()
     }
     
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.reloadItemsAtIndexPaths([indexPath])
+    }
+
     //MARK: FileLoaderDelegate
     
     func selectedFile(name: String) {

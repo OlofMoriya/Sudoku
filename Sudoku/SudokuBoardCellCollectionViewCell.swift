@@ -10,12 +10,11 @@ import UIKit
 
 class SudokuBoardCellCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var numberLabel: UILabel!
-
+    @IBOutlet weak var selectionView: UIView!
     @IBOutlet weak var availableLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
 }
