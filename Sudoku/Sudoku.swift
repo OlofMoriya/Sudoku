@@ -8,14 +8,14 @@
 
 import UIKit
 
-class Sudoku{
-    var data:[Int] = []
+public class Sudoku{
+    public var data:[Int] = []
     
-    init(){
+    public init(){
         data = Array<Int>(count: 81, repeatedValue: 0)
     }
     
-    init?(string:String){
+    public init?(string:String){
         for char in string{
             if let int = String(char).toInt(){
                 data.append(int)
@@ -72,7 +72,7 @@ class Sudoku{
     
     //MARK: Data Helpers
     
-    func nextEmptyIndex()->Int?{
+    public func nextEmptyIndex()->Int?{
         for i in 0...80{
             if data[i] == 0{
                 return i
@@ -81,7 +81,7 @@ class Sudoku{
         return nil
     }
     
-    func isValueValidInCoord(#value: Int, inX x:Int, andY y:Int)->Bool{
+    public func isValueValidInCoord(#value: Int, inX x:Int, andY y:Int)->Bool{
         if value < 1 || value > 9{
             return false
         }
@@ -93,7 +93,7 @@ class Sudoku{
         }
     }
     
-    func invalidNumbersForCoord(#x:Int, y:Int)->[Int]?{
+    public func invalidNumbersForCoord(#x:Int, y:Int)->[Int]?{
         if !Sudoku.isValidCoord(x: x, y: y){
             return nil
         }
@@ -107,7 +107,7 @@ class Sudoku{
         }
     }
     
-    func validValuesForCoord(#x:Int, y:Int)->[Int]?{
+    public func validValuesForCoord(#x:Int, y:Int)->[Int]?{
         if !Sudoku.isValidCoord(x: x, y: y){
             return nil
         }
@@ -123,7 +123,7 @@ class Sudoku{
         }
     }
     
-    func valuesInRow(row:Int)->[Int]?{
+    public func valuesInRow(row:Int)->[Int]?{
         if row < 0 || row > 8{
             return nil
         }
@@ -138,7 +138,7 @@ class Sudoku{
         return values
     }
     
-    func valuesInColumn(col:Int)->[Int]?{
+    public func valuesInColumn(col:Int)->[Int]?{
         if col < 0 || col > 8{
             return nil
         }
@@ -152,7 +152,7 @@ class Sudoku{
         return values
     }
     
-    func valuesInSquare(index:Int)->[Int]?{
+    public func valuesInSquare(index:Int)->[Int]?{
         if index < 0 || index > 8{
             return nil
         }
@@ -175,7 +175,7 @@ class Sudoku{
     
     //MARK: Validation
     
-    func sum()->Int{
+    public func sum()->Int{
         var sum = 0
         for value in data{
             sum += value
@@ -183,7 +183,7 @@ class Sudoku{
         return sum
     }
     
-    func validate()->Bool{
+    public func validate()->Bool{
         if sum() != 405 {
             return false
         }
