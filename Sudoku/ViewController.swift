@@ -88,9 +88,17 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     }
     
     @IBAction func numberDidChange(sender: AnyObject) {
+        var text = numberTextField.text
+        if count(text) >= 1{
+            let stringLength = count(text)
+            let substringIndex = stringLength - 1
+            text = numberTextField.text.substringFromIndex(advance(numberTextField.text.startIndex,substringIndex))
+        }
+
+        
         if let indexPath = selectedIndexPath{
-            var value = numberTextField.text.toInt()
-            if numberTextField.text == ""{
+            var value = text.toInt()
+            if text == ""{
                 value = 0
             }
             
