@@ -173,7 +173,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             solver.soleCandidate(self.sudoku!)
             var sum = self.sudoku!.sum()
             if sum == 405 && self.isSingleSolution(self.sudoku!, originalSudoku: original){
-                status = "Simple"
+                status = "Easy"
             }
             
             if sum != 405{
@@ -183,6 +183,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
                 }
                 sum = self.sudoku!.sum()
             }
+                        
             if sum != 405{
                 solver.backtrack(self.sudoku!, ignoreSolutions: [])
                 if self.sudoku!.sum() == 405 && self.isSingleSolution(self.sudoku!, originalSudoku: original){
@@ -297,6 +298,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
     func createdSudoku(sudoku: Sudoku) {
         self.sudoku = sudoku
         collectionView.reloadData()
+        statusLabel.text = ""
     }
 }
 
